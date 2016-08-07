@@ -1,7 +1,4 @@
 function enumFormatter(cell, row, enumObject) {
-    console.log("cell: " + cell);
-    console.log("row: " + row);
-    console.log("enumObject: " + enumObject);
     return enumObject[cell];
 }
 
@@ -32,6 +29,17 @@ var Table = React.createClass({
         this.loadCommentsFromServer();
         //setInterval(this.loadCommentsFromServer, this.props.pollInterval);
     },
+    renderShowsTotal(start, to, total) {
+        return (
+            <p style={ { color: '' } }>
+                From { (start + 1) } to { (to + 1) }, total { total }&nbsp; &nbsp;
+            </p>
+        );
+    },
+    onPageChange(page, sizePerPage) {
+        console.log(page);
+        console.log(sizePerPage);
+    },
     render: function () {
 
         const options = {
@@ -45,6 +53,7 @@ var Table = React.createClass({
             firstPage: 'First', // First page button text
             lastPage: 'Last', // Last page button text
             paginationShowsTotal: this.renderShowsTotal,  // Accept bool or function
+            onPageChange: this.onPageChange,
             hideSizePerPage: true //> You can hide the dropdown for sizePerPage
         };
 
