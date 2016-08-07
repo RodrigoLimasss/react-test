@@ -57,7 +57,9 @@ var Table = React.createClass({
             lastPage: 'Last', // Last page button text
             paginationShowsTotal: this.renderShowsTotal,  // Accept bool or function
             onPageChange: this.onPageChange,
-            hideSizePerPage: true //> You can hide the dropdown for sizePerPage
+            hideSizePerPage: true, // You can hide the dropdown for sizePerPage
+            //afterSearch: afterSearch,  //(searchText, result) define a after search hook,
+            clearSearch: true
         };
 
         return (
