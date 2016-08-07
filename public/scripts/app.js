@@ -40,6 +40,9 @@ var Table = React.createClass({
         console.log(page);
         console.log(sizePerPage);
     },
+    csvFormatter(cell, row) {
+        return `mailto: ${cell}`;
+    },
     render: function () {
 
         const options = {
@@ -59,27 +62,28 @@ var Table = React.createClass({
 
         return (
             <div className="table">
-                <BootstrapTable data={this.state.data} striped={true} hover={true} search={true} pagination={true} options={options}>
+                <BootstrapTable data={this.state.data} striped={true} hover={true} exportCSV={ true } search={true} pagination={true} options={options}>
                     <TableHeaderColumn isKey={true} dataField="id"
                         filter={{ type: "TextFilter", placeholder: "Enter a ID" }}>
                         ID
                     </TableHeaderColumn>
-                    <TableHeaderColumn dataField="gender"
+                    <TableHeaderColumn dataField="gender" csvHeader='Gender'
                         filter={{ type: "SelectFilter", options: genderType }}
                         dataFormat={ enumFormatter }
                         formatExtraData={genderType}>
                         Gender
                     </TableHeaderColumn>
-                    <TableHeaderColumn dataField="first_name"
+                    <TableHeaderColumn dataField="first_name" csvHeader='First Name'
                         filter={{ type: "TextFilter", placeholder: "Enter a name" }}>
                         First Name
                     </TableHeaderColumn>
-                    <TableHeaderColumn dataField="last_name"
+                    <TableHeaderColumn dataField="last_name" csvHeader='Last Name'
                         filter={{ type: "TextFilter", placeholder: "Enter a last name" }}>
                         Last Name
                     </TableHeaderColumn>
-                    <TableHeaderColumn dataField="email"
-                        filter={{ type: "TextFilter", placeholder: "Enter a email" }}>
+                    <TableHeaderColumn dataField="email" csvHeader='Email'
+                        filter={{ type: "TextFilter", placeholder: "Enter a email" }}
+                        csvFormat={ this.csvFormatter }>
                         Email
                     </TableHeaderColumn>
                 </BootstrapTable>
