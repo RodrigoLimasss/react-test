@@ -34,9 +34,23 @@ var Table = React.createClass({
     },
     render: function () {
 
+        const options = {
+            page: 1,  // which page you want to show as default
+            sizePerPageList: [5, 20], // you can change the dropdown list for size per page
+            sizePerPage: 20,  // which size per page you want to locate as default
+            pageStartIndex: 1, // where to start counting the pages
+            paginationSize: 5,  // the pagination bar size.
+            prePage: 'Prev', // Previous page button text
+            nextPage: 'Next', // Next page button text
+            firstPage: 'First', // First page button text
+            lastPage: 'Last', // Last page button text
+            paginationShowsTotal: this.renderShowsTotal,  // Accept bool or function
+            hideSizePerPage: true //> You can hide the dropdown for sizePerPage
+        };
+
         return (
             <div className="table">
-                <BootstrapTable data={this.state.data} striped={true} hover={true} search={true} pagination={true}>
+                <BootstrapTable data={this.state.data} striped={true} hover={true} search={true} pagination={true} options={options}>
                     <TableHeaderColumn isKey={true} dataField="id"
                         filter={{ type: "TextFilter", placeholder: "Enter a ID" }}>
                         ID
