@@ -40,7 +40,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: './public/src/index-prod.html'
+            template: './public/src/index.html'
         }),
         new webpack.DefinePlugin({
             'process.env': {
